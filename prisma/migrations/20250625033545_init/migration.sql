@@ -1,0 +1,12 @@
+-- CreateTable
+CREATE TABLE `reports` (
+    `id` INTEGER NOT NULL AUTO_INCREMENT,
+    `nim` VARCHAR(50) NOT NULL,
+    `name` VARCHAR(255) NOT NULL,
+    `phone` VARCHAR(100) NOT NULL,
+    `title` VARCHAR(100) NOT NULL,
+    `detail` TEXT NOT NULL,
+    `reportAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+
+    PRIMARY KEY (`id`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;

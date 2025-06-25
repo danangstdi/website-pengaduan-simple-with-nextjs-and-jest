@@ -2,32 +2,136 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
+@layer base {
+  @font-face {
+    font-family: Poppins;
+    src:url('../../public/fonts/Poppins-Regular.ttf');
+  }
+  
+  @font-face {
+    font-family: PoppinsBold;
+    src:url('../../public/fonts/Poppins-Bold.ttf');
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+  @font-face {
+    font-family: PoppinsExtraBold;
+    src:url('../../public/fonts/Poppins-ExtraBold.ttf');
+  }
+
+  @font-face {
+    font-family: PoppinsBlack;
+    src:url('../../public/fonts/Poppins-Black.ttf');
+  }
+
+  .poppins {
+    font-family: Poppins;
+  }
+
+  .poppins-bold {
+    font-family: PoppinsBold;
+  }
+
+  .poppins-extrabold {
+    font-family: PoppinsExtraBold;
+  }
+
+  .poppins-black {
+    font-family: PoppinsBlack;
+  }
+
+  body::-webkit-scrollbar {
+    width: 0.7rem;
+    height: 0.7rem;
+  }
+
+  body::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+
+  body::-webkit-scrollbar-thumb {
+    border-radius: 30rem;
+    @apply bg-slate-700 bg-opacity-60
+  }
+
+  .bg-container {
+    background-image: url('../../public/svg/background2.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-blend-mode: luminosity;
+  }
+
+  .bg-auth {
+    background-image: url('../../public/img/login-background.webp');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .nav-list {
+    animation: navAnimation .4s;
+  }
+
+  @keyframes navAnimation {
+    0% {
+      margin-right: -30rem;
+    },
+    100% {
+      margin-right: 0;
+    }
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+@layer components {
+  /* Input container */
+  .input-container {
+    position: relative;
+    margin: 20px 0;
   }
+
+  /* Input field */
+  .input-field {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-bottom: 2px solid #ccc;
+    outline: none;
+    background-color: transparent;
+  }
+
+  /* Input label */
+  .input-label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 16px;
+    color: rgba(204, 204, 204, 0);
+    pointer-events: none;
+    transition: all 0.3s ease;
+  }
+
+  /* Input highlight */
+  .input-highlight {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    width: 0;
+    transition: all 0.3s ease;
+    @apply bg-slate-800
+  }
+
+  /* Input field:focus styles */
+  .input-field:focus + .input-label {
+    top: -10px;
+    font-size: 12px;
+    @apply text-slate-800
+  }
+
+  .input-field:focus + .input-label + .input-highlight {
+    width: 100%;
+  }
+
 }
